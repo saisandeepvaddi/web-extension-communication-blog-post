@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "web-extension-communication-blog-post",
+  "description": "Source code for my blog post on communication between different parts of a web extension",
+  "version": "0.0.1",
+  "icons": {
+    "64": "icons/icon.png"
+  },
+  "background": {
+    "scripts": ["background_script.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["content_script.js"]
+    }
+  ],
+  "permissions": ["http://*/*", "https://*/*", "<all_urls>"],
+
+  "content_security_policy": "script-src 'self'; object-src 'self';",
+  "browser_action": {
+    "default_icon": {
+      "64": "icons/icon.png"
+    },
+    "default_popup": "browserAction.html",
+    "default_title": "web-extension-communication-blog-post"
+  }
+}

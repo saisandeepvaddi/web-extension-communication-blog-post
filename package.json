@@ -1,0 +1,28 @@
+{
+  "name": "web-extension-communication-blog-post",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:saisandeepvaddi/web-extension-communication-blog-post.git",
+  "author": "Sai Sandeep Vaddi <saisandeepvaddi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/tsc --watch",
+    "build": "./node_modules/.bin/webpack"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^7.0.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "webextension-polyfill-ts": "^0.22.0"
+  }
+}
