@@ -39,24 +39,22 @@ class Background {
     );
   }
 
-  registerBackgroundMessengerRequests() {
+  registerMessengerRequests() {
     this.requests.set(BackgroundMessages.SAY_HELLO_TO_BG, this.receiveHello);
 
     this.requests.set(BackgroundMessages.SAY_BYE_TO_BG, this.receiveBye);
   }
 
   listenForMessages() {
-    browser.runtime.onMessage.addListener(
-      (message: IMessage<any>, sender: Runtime.MessageSender) => {
-        const { type, data } = message;
-        return this.requests.get(type)(sender, data);
-      }
-    );
+    browser.runtime.onMessage.addListener((message, sender) => {
+      const { type, data } = message;
+      return this.requests.get(type)(sender, data);
+    });
   }
 
   init() {
     // 1. Create a mapping for message listeners
-    this.registerBackgroundMessengerRequests();
+    this.registerMessengerRequests();
 
     // 2. Listen for messages from background and run the listener from the map
     this.listenForMessages();
