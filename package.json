@@ -6,8 +6,8 @@
   "author": "Sai Sandeep Vaddi <saisandeepvaddi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/tsc --watch",
-    "build": "./node_modules/.bin/webpack"
+    "start": "./node_modules/.bin/webpack --mode development --watch",
+    "build": "./node_modules/.bin/webpack --mode production"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

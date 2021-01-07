@@ -13,9 +13,9 @@ require("fs")
     }
   });
 
-console.log("entry:", entry);
 module.exports = {
   entry,
+  devtool: "cheap-module-source-map",
   output: {
     path: path.resolve(__dirname, "./extension"),
     filename: "[name].js",

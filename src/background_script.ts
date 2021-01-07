@@ -1,21 +1,22 @@
 // Put all the javascript code here, that you want to execute after page load.
 // Install webextension-polyfill for JavaScript based projects
-import { browser } from "webextension-polyfill-ts";
+import { browser, Runtime } from "webextension-polyfill-ts";
 
 import { BackgroundMessages, ContentScriptMessages } from "./messages";
 import Messenger from "./Messenger";
+import { IMessage, MessageListener } from "./types";
 
 class Background {
-  requests = new Map();
+  requests = new Map<BackgroundMessages, MessageListener>();
 
-  async receiveHello(sender, data) {
+  async receiveHello(sender: Runtime.MessageSender, data: IMessage<any>) {
     console.log("receiveHelloFromContentScript: ", data);
     return {
       message: "Hey there!!!",
     };
   }
 
-  async receiveBye(sender, data) {
+  async receiveBye(sender: Runtime.MessageSender, data: IMessage<any>) {
     console.log("receiveByeFromContentScript: ", data);
     return {
       message: "Bye there!!!",
@@ -45,10 +46,12 @@ class Background {
   }
 
   listenForMessages() {
-    browser.runtime.onMessage.addListener((message, sender) => {
-      const { type, data } = message;
-      return this.requests.get(type)(sender, data);
-    });
+    browser.runtime.onMessage.addListener(
+      (message: IMessage<any>, sender: Runtime.MessageSender) => {
+        const { type, data } = message;
+        return this.requests.get(type)(sender, data);
+      }
+    );
   }
 
   init() {
