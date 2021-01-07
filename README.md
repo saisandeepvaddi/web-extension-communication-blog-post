@@ -1,6 +1,6 @@
 # web-extension-communication-blog-post
 
-This is sample code for the [article on my blog](https://saisandeepvaddi/blog/how-to-communicate-between-content-script-popup-background-in-web-extensions).
+This is sample code for the [blog post on my website](https://saisandeepvaddi.com/blog/how-to-communicate-between-content-script-popup-background-in-web-extensions).
 
 Use the `extension` folder for the built version of the code.
 
